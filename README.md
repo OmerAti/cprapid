@@ -22,3 +22,4 @@ Bu script, WHM/cPanel sunucularında otomatik olarak atanan `*.cprapid.com` host
 git clone https://github.com/OmerAti/whm-cprapid-cleaner.git
 cd whm-cprapid-cleaner
 chmod +x cprapid-cleaner.sh
+bash cprapid-cleaner.sh
