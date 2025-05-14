@@ -1,33 +1,18 @@
-# WHM/cPanel CPRapid Hostname Temizleyici 🧹
+# WHM/cPanel CPRapid Temizleyici
 
-Bu script, WHM/cPanel sunucularında otomatik olarak atanan `*.cprapid.com` hostnamelerini tespit edip temizler ve kendi alan adınızı kullanarak hostname değişikliği yapmanıza yardımcı olur.
+Bu script, WHM/cPanel sunucularında otomatik olarak atanan `*.cprapid.com` hostnamelerini tespit eder ve siler. 
+Özellikle yeni kurulan sunucularda görülen bu geçici alan adları, marka tutarlılığı ve SSL uyumluluğu açısından önerilmez.
 
-## 🔍 Nedir Bu `*.cprapid.com`?
+## Özellikler
+- `cprapid.com` uzantılı alan adlarını tarar
+- İsteğe bağlı `--dry-run` modu ile simülasyon yapar
+- WHM API kullanarak temizleme işlemini gerçekleştirir
+- İşlem loglarını `/var/log/clean_cprapid_domains.log` dosyasına yazar
 
-cPanel, yeni kurulan sunuculara geçici olarak `subdomain.cprapid.com` biçiminde bir hostname atar. Bu, kullanıcıların ilk girişlerinde SSL uyarısı görmemeleri içindir. Ancak:
-
-- Bu hostname size ait değildir.
-- DNS ve marka yönetimi açısından tavsiye edilmez.
-- Adres çubuğunda şüpheli görünebilir.
-
-## 🎯 Ne Yapar Bu Araç?
-
-- Geçici CPRapid hostnamesini tespit eder.
-- Girdiğiniz kendi domaininize ait hostname ile değiştirir.
-- `/etc/hosts` dosyasını günceller.
-- Gerekirse WHM üzerinden AutoSSL tetikler.
-- Gereksiz `cprapid.com` DNS kayıtlarını siler (isteğe bağlı).
-
----
-
-## ⚙️ Gereksinimler
-
-- WHM/cPanel kurulu bir sunucu
-- root SSH erişimi
-- Kendi domain adınıza ait tanımlı bir subdomain (örnek: `server.seninalanadiniz.com`)
-- Subdomain için A kaydı, sunucunun IP’sine yönlenmiş olmalı
-
----
+## Gereksinimler
+- WHM/cPanel erişimi
+- `jq` paketi (`yum install -y jq` veya `apt install -y jq`)
+- root kullanıcı veya sudo yetkisi
 
 ## 🚀 Kurulum & Kullanım
 
