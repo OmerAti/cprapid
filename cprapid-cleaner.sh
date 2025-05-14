@@ -42,7 +42,7 @@ for domain in $CPRAPID_DOMAINS; do
         log_message "Etki alani siliniyor: $domain"
         DELETE_RESULT=$(whmapi1 --output=jsonpretty delete_domain domain="$domain")
         if [[ $(echo "$DELETE_RESULT" | jq -r '.metadata.result') -eq 1 ]]; then
-            log_message "'$domain' alan adı basariyla silindi."
+            log_message "'$domain' alan adi basariyla silindi."
         else
             log_message "Etki alani silinemedi '$domain'. Sebeb: $(echo "$DELETE_RESULT" | jq -r '.metadata.reason')"
         fi
